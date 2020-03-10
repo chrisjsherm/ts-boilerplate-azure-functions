@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "typeRoots": ["node_modules/@types"],
+    "resolveJsonModule": true
+  },
+  "include": [
+    // Include .ts, .d.ts and .tsx files.
+    "./src/**/*"
+  ],
+  "exclude": [
+    // Filter these files from the include property.
+    "./src/**/*.spec.*"
+  ]
+}
