@@ -5,11 +5,10 @@ logger.info('Entered index.ts');
 /**
  * Sum two numbers.
  *
- * @param {number} a first number for summation.
- * @param {number} b second number for summation.
- *
- * @returns {number} Sum of parameters.
+ * @param a first number for summation.
+ * @param b second number for summation.
+ * @returns Sum of parameters.
  */
-export function sum(a, b): number {
+export function sum(a: number, b: number): number {
   return a + b;
 }

@@ -35,5 +35,9 @@ module.exports = {
     sourceType: 'module',
   },
   // Place to specify ESLint rules. Used to overwrite rules specified from the extended configs.
-  rules: {},
+  rules: {
+    // Disable JSDoc types because it's redundant for TypeScript code.
+    'jsdoc/require-param-type': 0,
+    'jsdoc/require-returns-type': 0,
+  },
 };
