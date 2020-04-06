@@ -1,11 +1,21 @@
 module.exports = {
+  root: true,
   // Specifies the ESLint parser.
   parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
   extends: [
     // JSDoc specific linting rules for ESLint.
     'plugin:jsdoc/recommended',
 
-    // Uses the recommended rules from the @typescript-eslint/eslint-plugin.
+    // Use ESLint's inbuilt "recommended" config - it turns on a small,
+    // sensible set of rules which lint for well-known best-practices.
+    'eslint:recommended',
+
+    // Disable a few of the eslint:recommended rules the TypeScript compiler
+    // already checks for.
+    'plugin:@typescript-eslint/eslint-recommended',
+
+    // Use the typescript-eslint NPM project's recommended rule set.
     'plugin:@typescript-eslint/recommended',
 
     // Uses eslint-config-prettier to disable ESLint rules from
