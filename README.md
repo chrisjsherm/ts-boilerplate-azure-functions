@@ -1,29 +1,26 @@
-# TS Boilerplate
+# TS Boilerplate Azure Functions
 
-A boilerplate template for NodeJS TypeScript projects.
+A boilerplate template for Azure Functions TypeScript projects.
 
 ## Directory structure
 
 Configuration goes in the root directory.
-Source code goes in the `src` directory along with test files. The `main` file
-is `src/index.ts`.
-
-## TypeScript
-
-[TypeScript Node](https://github.com/TypeStrong/ts-node) acts as a TypeScript
-NodeJS runtime environment. TypeScript Node registers the
-[TypeScript](https://www.typescriptlang.org/) compiler to handle files with
-TypeScript and JavaScript file extensions. TypeScript Node loads the
-TypeScript configuration file, `tsconfig.json`, automatically.
+Azure Functions require function definitions in the root directory. Use the
+VS Code Azure Functions extension to create Azure Functions.
+Shared source code goes in the `shared` directory.
 
 ## Development
 
-To run the project, execute the command `npm start`. This command uses TypeScript
-Node to start a NodeJS runtime environment that executes `src/index.ts`. To
-enhance productivity, [nodemon](https://www.npmjs.com/package/nodemon)
-monitors TypeScript and JavaScript files for changes and restarts TypeScript
-Node when it detects a change. The nodemon configuration file is
-`nodemon.config.json`.
+Rename the `local.settings.sample.json` to `local.settings.json`.
+
+To run the project, execute the command `npm start`. This command uses starts a
+local Azure Functions runtime. The runtime reads settings from
+`local.settings.json`.
+
+### Debug
+
+Debug the project by running the "Attach to Node Functions" configuration from
+the VS Code debug menu.
 
 ### Tests
 
@@ -35,6 +32,9 @@ in the `jest.config.js` file.
 
 To execute tests, run `npm test`. To execute tests in watch mode, run
 `npm test -- --watch`.
+
+To debug tests, select the "Jest All" or "Jest Current File" configuration from
+the VS Code debug menu.
 
 ### Linting
 

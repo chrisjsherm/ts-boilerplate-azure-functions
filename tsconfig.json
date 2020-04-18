@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "outDir": "dist",
     "target": "es6",
     "module": "commonjs",
@@ -11,10 +12,14 @@
   },
   "include": [
     // Include .ts, .d.ts and .tsx files.
-    "./src/**/*"
+    "**/*.ts"
   ],
   "exclude": [
     // Filter these files from the include property.
-    "./src/**/*.spec.*"
+    "./coverage/**",
+    "./dist/**",
+    "./logs/**",
+    "./node_modules/**",
+    "**/*.spec.*"
   ]
 }

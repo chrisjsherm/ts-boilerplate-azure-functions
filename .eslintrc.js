@@ -34,6 +34,8 @@ module.exports = {
     // Allows for the use of imports.
     sourceType: 'module',
   },
+  // You can tell ESLint to ignore specific files and directories by ignorePatterns in your config files.
+  ignorePatterns: ['coverage/', 'dist/', 'logs', 'node_modules'],
   // Place to specify ESLint rules. Used to overwrite rules specified from the extended configs.
   rules: {
     // Disable JSDoc types because it's redundant for TypeScript code.
