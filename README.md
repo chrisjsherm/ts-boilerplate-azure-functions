@@ -9,9 +9,15 @@ Azure Functions require function definitions in the root directory. Use the
 VS Code Azure Functions extension to create Azure Functions.
 Shared source code goes in the `shared` directory.
 
-## Development
+## Configuration
 
-Rename the `local.settings.sample.json` to `local.settings.json`.
+Rename the `local.settings.sample.json` to `local.settings.json` and fill with
+your values.
+
+In `shared/cosmos-db/configuration` rename `cosmos-db.config.sample.ts` to
+`cosmos-db.config.ts` and fill with your values.
+
+## Development
 
 To run the project, execute the command `npm start`. This command uses starts a
 local Azure Functions runtime. The runtime reads settings from
