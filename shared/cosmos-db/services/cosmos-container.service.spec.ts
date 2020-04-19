@@ -1,7 +1,6 @@
 import { CosmosContainerService } from './cosmos-container.service';
 import { CosmosServiceConfiguration } from '../models/cosmos-service-configuration.model';
 import { CosmosContainerConfiguration } from '../models/cosmos-container-configuration.model';
-import { SqlQuerySpec } from '@azure/cosmos';
 
 describe('CosmosContainerService', () => {
   interface Person {
