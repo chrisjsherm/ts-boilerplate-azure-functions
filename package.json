@@ -7,7 +7,7 @@
     "compile": "tsc",
     "lint": "eslint 'src/**/*.{js,ts}' --cache --fix",
     "start": "nodemon --config nodemon.config.json",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "author": "Christopher Sherman",
   "license": "MIT",

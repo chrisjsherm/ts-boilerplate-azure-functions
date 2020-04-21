@@ -1,5 +1,5 @@
 module.exports = {
   hooks: {
-    'pre-commit': 'npm run lint && npm test',
+    'pre-commit': 'npm run lint && npm test -- --watch=false',
   },
 };
