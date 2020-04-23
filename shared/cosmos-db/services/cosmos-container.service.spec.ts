@@ -54,17 +54,19 @@ describe('CosmosContainerService', () => {
     expect(persons).toHaveLength(2);
   });
 
-  it('should return an empty array when an error occurs getting entities', async () => {
+  it('should throw when an error occurs getting entities', async () => {
     // Arrange.
     const fetchAllSpy = spyOn(service, 'fetchAll').and.throwError(
       'Session not available',
     );
 
     // Act.
-    const persons = await service.get();
-
-    // Assert.
-    expect(fetchAllSpy).toHaveBeenCalledTimes(1);
-    expect(persons).toHaveLength(0);
+    try {
+      await service.get();
+    } catch (error) {
+      // Assert.
+      expect(fetchAllSpy).toHaveBeenCalledTimes(1);
+      expect(error.message).toBe('Session not available');
+    }
   });
 });

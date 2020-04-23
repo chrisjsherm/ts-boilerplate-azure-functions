@@ -23,6 +23,7 @@ export abstract class CosmosContainerService<T> {
       .database(containerConfiguration.databaseName)
       .container(containerConfiguration.containerName);
 
+    this.containerName = containerConfiguration.containerName;
     this.queryResultLimit = containerConfiguration.queryResultLimit;
   }
 
@@ -42,7 +43,7 @@ export abstract class CosmosContainerService<T> {
     const querySpecification: SqlQuerySpec = {
       query: SqlStatementsService.generateSelectStatement(
         this.containerName,
-        limit,
+        limit || this.queryResultLimit,
         orderByProperty,
         isOrderDesc,
       ),
@@ -55,6 +56,7 @@ export abstract class CosmosContainerService<T> {
       logger.error(
         `Error occurred fetching entities: ${JSON.stringify(error, null, 2)}`,
       );
+      throw error;
     }
 
     return entities;
