@@ -24,15 +24,14 @@ export class SqlStatementsService {
    * Generate the SQL TOP statement
    *
    * @param top Limit on how many entities to fetch
-   * @param queryResultLimit Maximum number of results
    * @returns SQL TOP statement
    */
-  static generateTopStatement(top: number, queryResultLimit = 20): string {
+  static generateTopStatement(top: number): string {
     // Prevent SQL injection.
-    if (Number.isSafeInteger(top) && top < queryResultLimit && top > 0) {
+    if (Number.isSafeInteger(top) && top > 0) {
       return `TOP ${top}`;
     }
-    return `TOP ${queryResultLimit}`;
+    return '';
   }
 
   /**

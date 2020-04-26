@@ -100,7 +100,7 @@ describe('generateTopStatement', () => {
     const topStatement = SqlStatementsService.generateTopStatement(top);
 
     // Assert.
-    expect(topStatement).toBe('TOP 20');
+    expect(topStatement).toBe('');
   });
 
   it('should block an unsafe integer top parameter', () => {
@@ -111,6 +111,6 @@ describe('generateTopStatement', () => {
     const topStatement = SqlStatementsService.generateTopStatement(top);
 
     // Assert.
-    expect(topStatement).toBe('TOP 20');
+    expect(topStatement).toBe('');
   });
 });
