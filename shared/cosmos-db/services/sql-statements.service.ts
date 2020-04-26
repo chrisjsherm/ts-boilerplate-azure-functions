@@ -17,7 +17,10 @@ export class SqlStatementsService {
       isOrderDesc,
     );
 
-    return `SELECT ${topStatement} * FROM ${containerName} ${this.containerNameAlias} ${orderByStatement}`;
+    return (
+      `SELECT ${topStatement} * ` +
+      `FROM ${containerName} ${this.containerNameAlias} ${orderByStatement}`.trim()
+    );
   }
 
   /**
@@ -45,6 +48,10 @@ export class SqlStatementsService {
     propertyName: string,
     isOrderDescending = false,
   ): string {
+    if (propertyName == undefined) {
+      return '';
+    }
+
     if (!SqlStatementsService.isSafePropertyName(propertyName)) {
       return '';
     }

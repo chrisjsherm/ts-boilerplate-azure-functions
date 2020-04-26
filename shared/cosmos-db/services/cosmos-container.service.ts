@@ -30,20 +30,20 @@ export abstract class CosmosContainerService<T> {
   /**
    * Get the latest entities<T> from Cosmos DB.
    *
+   * @param limit Number of entities to fetch
    * @param isOrderDesc Whether to order results in descending order
    * @param orderByProperty Property to order results by
-   * @param limit Number of entities to fetch
    * @returns Latest entities<T>
    */
   async get(
+    limit: number = this.queryResultLimit,
     isOrderDesc = false,
     orderByProperty?: string,
-    limit?: number,
   ): Promise<T[]> {
     const querySpecification: SqlQuerySpec = {
       query: SqlStatementsService.generateSelectStatement(
         this.containerName,
-        limit || this.queryResultLimit,
+        this.getResultLimit(limit),
         orderByProperty,
         isOrderDesc,
       ),
@@ -75,5 +75,26 @@ export abstract class CosmosContainerService<T> {
       .fetchAll();
 
     return entities;
+  }
+
+  /**
+   * Validate the number of results we limit the query to. If the parameter
+   * is not a safe integer or exceeds the service's result limit, return the
+   * container's result limit.
+   *
+   * @param resultLimit Number of results to limit a query to
+   * @returns Number of results to a limit a query to
+   */
+  /* istanbul ignore next */
+  private getResultLimit(resultLimit: number): number {
+    if (!Number.isSafeInteger(resultLimit)) {
+      return this.queryResultLimit;
+    }
+
+    if (resultLimit > this.queryResultLimit) {
+      return this.queryResultLimit;
+    }
+
+    return resultLimit;
   }
 }

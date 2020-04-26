@@ -52,6 +52,32 @@ describe('generateSelectStatement', () => {
 });
 
 describe('generateOrderByStatement', () => {
+  it('should return empty string on when property name is undefined', () => {
+    // Arrange.
+    const propertyName: string = undefined;
+
+    // Act.
+    const orderByStatement = SqlStatementsService.generateOrderByStatement(
+      propertyName,
+    );
+
+    // Assert.
+    expect(orderByStatement).toBe('');
+  });
+
+  it('should return empty string on when property name is null', () => {
+    // Arrange.
+    const propertyName: string = null;
+
+    // Act.
+    const orderByStatement = SqlStatementsService.generateOrderByStatement(
+      propertyName,
+    );
+
+    // Assert.
+    expect(orderByStatement).toBe('');
+  });
+
   it('should return empty string on an unsafe property name', () => {
     // Arrange.
     const propertyName = 'name$';

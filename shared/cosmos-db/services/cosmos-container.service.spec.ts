@@ -35,7 +35,7 @@ describe('CosmosContainerService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should get entities', async () => {
+  it('should get entities when calling get with no parameters', async () => {
     // Arrange.
     const fetchAllSpy = spyOn(service, 'fetchAll').and.returnValue([
       {
@@ -51,7 +51,24 @@ describe('CosmosContainerService', () => {
 
     // Assert.
     expect(fetchAllSpy).toHaveBeenCalledTimes(1);
+    expect(fetchAllSpy).toHaveBeenCalledWith({
+      query: 'SELECT TOP 20 * FROM container c',
+    });
     expect(persons).toHaveLength(2);
+  });
+
+  it('should get entities when calling get with parameters', async () => {
+    // Arrange.
+    const fetchAllSpy = spyOn(service, 'fetchAll');
+
+    // Act.
+    await service.get(5, true, 'name');
+
+    // Assert.
+    expect(fetchAllSpy).toHaveBeenCalledTimes(1);
+    expect(fetchAllSpy).toHaveBeenCalledWith({
+      query: 'SELECT TOP 5 * FROM container c ORDER BY c.name DESC',
+    });
   });
 
   it('should throw when an error occurs getting entities', async () => {
