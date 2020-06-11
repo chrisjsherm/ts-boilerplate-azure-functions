@@ -1,0 +1,1 @@
+Clean dist directory on `NPM run compile`
