@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "compile": "tsc",
+    "build": "tsc",
     "lint": "eslint 'src/**/*.{js,ts}' --cache --fix",
     "start": "nodemon --config nodemon.config.json",
     "test": "jest --watch"
