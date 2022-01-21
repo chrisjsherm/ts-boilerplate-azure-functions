@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@azure/cosmos": "3.6.3",
-    "log4js": "6.1.0"
+    "log4js": "6.4.0"
   },
   "devDependencies": {
     "@types/jest": "25.1.3",
